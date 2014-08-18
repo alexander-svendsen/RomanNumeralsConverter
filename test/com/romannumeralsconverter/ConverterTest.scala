@@ -46,4 +46,12 @@ class ConverterTest extends FunSuite {
   test("convertToRomanNumeral should be able to convert 14 to XIV"){
     assert(convertToRomanNumeral(14) == "XIV")
   }
+
+  test("convertToRomanNumeral should be able to convert 18 to XVIII"){
+    assert(convertToRomanNumeral(18) == "XVIII")
+  }
+
+  test("convertToRomanNumeral should be able to convert 19 to XIX"){
+    assert(convertToRomanNumeral(19) == "XIX")
+  }
 }
