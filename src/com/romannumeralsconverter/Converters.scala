@@ -5,6 +5,7 @@ import scala.collection.{mutable, SortedMap}
 object convertToRomanNumeral extends ((Int) => RomanNumeral) {
   val valueToRomanNumeralMap =
     mutable.LinkedHashMap (
+      40 -> "XL",
       10 -> "X",
       9 -> "IX",
       5 -> "V",
