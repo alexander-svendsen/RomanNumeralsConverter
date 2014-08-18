@@ -35,5 +35,8 @@ class ConverterTest extends FunSuite {
     assert(convertToRomanNumeral(7) == "VII")
   }
 
+  test("convertToRomanNumeral should be able to convert 9 to IX"){
+    assert(convertToRomanNumeral(9) == "IX")
+  }
 
 }
