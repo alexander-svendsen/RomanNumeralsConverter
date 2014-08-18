@@ -1,42 +1,35 @@
 package com.romannumeralsconverter
 
-object convertToRomanNumeral extends ((Int) => RomanNumeral){
-  def apply(number:Int) : RomanNumeral = {
+import scala.collection.{mutable, SortedMap}
+
+object convertToRomanNumeral extends ((Int) => RomanNumeral) {
+  val valueToRomanNumeralMap =
+    mutable.LinkedHashMap (
+      10 -> "X",
+      9 -> "IX",
+      5 -> "V",
+      4 -> "IV",
+      1 -> "I"
+    )
+
+  def apply(number: Int): RomanNumeral = {
     var romanNumeral = ""
     var counter = number
+    val default = (0,"")
 
-    if (counter >= 10){
-      romanNumeral += "X"
-      counter -= 10
-    }
-
-    if (counter == 9){
-      romanNumeral += "IX"
-      counter -= 9
-    }
-
-    if (counter >= 5){
-      romanNumeral += "V"
-      counter -= 5
-    }
-
-    if (counter == 4){
-      romanNumeral += "IV"
-      counter -= 4
-    }
-
-    while(counter > 0){
-      romanNumeral += "I"
-      counter -= 1
-    }
+    var biggestFoundTuple = (0,"")
+    do{
+      biggestFoundTuple = valueToRomanNumeralMap.find(_._1 <= counter).getOrElse(default)
+      romanNumeral += biggestFoundTuple._2
+      counter -= biggestFoundTuple._1
+    }while(biggestFoundTuple._2 != "")
 
     new RomanNumeral(romanNumeral)
   }
-
 }
 
 
-object convertToLatinNumeral extends ((String) => Int){
+object convertToLatinNumeral extends ((String) => Int) {
   def apply(romanNumeral: String): Int = {
     0
   }
