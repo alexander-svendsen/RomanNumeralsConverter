@@ -62,7 +62,45 @@ class ConverterTest extends FunSuite {
   test("convertToRomanNumeral should be able to convert 30 to XXX"){
     assert(convertToRomanNumeral(30) == "XXX")
   }
+
   test("convertToRomanNumeral should be able to convert 40 to XL"){
     assert(convertToRomanNumeral(40) == "XL")
+  }
+
+  test("convertToRomanNumeral should be able to convert 50 to L"){
+    assert(convertToRomanNumeral(50) == "L")
+  }
+
+  test("convertToRomanNumeral should be able to convert 70 to LXX"){
+    assert(convertToRomanNumeral(70) == "LXX")
+  }
+
+  test("convertToRomanNumeral should be able to convert 90 to XC"){
+    assert(convertToRomanNumeral(90) == "XC")
+  }
+
+  test("convertToRomanNumeral should be able to convert 100 to C"){
+    assert(convertToRomanNumeral(100) == "C")
+  }
+
+  test("convertToRomanNumeral should be able to convert 400 to CD"){
+    assert(convertToRomanNumeral(400) == "CD")
+  }
+
+  test("convertToRomanNumeral should be able to convert 500 to D"){
+    assert(convertToRomanNumeral(500) == "D")
+  }
+
+  test("convertToRomanNumeral should be able to convert 900 to CM"){
+    assert(convertToRomanNumeral(900) == "CM")
+  }
+
+  test("convertToRomanNumeral should be able to convert 1000 to M"){
+    assert(convertToRomanNumeral(1000) == "M")
+  }
+
+  //Ultimate test
+  test("convertToRomanNumeral should be able to convert 1995 to MCMXCV"){
+    assert(convertToRomanNumeral(1995) == "MCMXCV")
   }
 }
