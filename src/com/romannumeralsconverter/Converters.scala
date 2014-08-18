@@ -5,6 +5,10 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral){
     var romanNumeral = ""
     var counter = number
 
+    if (counter == 10){
+      return RomanNumeral("X")
+    }
+
     if (counter == 9){
       return RomanNumeral("IX")
     }
