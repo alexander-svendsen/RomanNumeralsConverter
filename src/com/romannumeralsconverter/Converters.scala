@@ -5,12 +5,14 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral){
     var romanNumeral = ""
     var counter = number
 
-    if (counter == 10){
-      return RomanNumeral("X")
+    if (counter >= 10){
+      romanNumeral += "X"
+      counter -= 10
     }
 
     if (counter == 9){
-      return RomanNumeral("IX")
+      romanNumeral += "IX"
+      counter -= 9
     }
 
     if (counter >= 5){
@@ -19,7 +21,8 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral){
     }
 
     if (counter == 4){
-      return RomanNumeral("IV")
+      romanNumeral += "IV"
+      counter -= 4
     }
 
     while(counter > 0){
