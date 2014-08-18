@@ -6,16 +6,9 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral){
     var counter = number
 
 
-    if (counter == 7){
-      return RomanNumeral("VII")
-    }
-
-    if (counter == 6){
-      return RomanNumeral("VI")
-    }
-
-    if (counter == 5){
-      return RomanNumeral("V")
+    if (counter >= 5){
+      romanNumeral += "V"
+      counter -= 5
     }
 
     if (counter == 4){
