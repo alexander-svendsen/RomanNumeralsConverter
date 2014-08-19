@@ -39,13 +39,16 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral) {
 
 object convertToLatinNumeral extends ((String) => Int) {
   def apply(romanNumeral: String): Int = {
-    if (romanNumeral == "VI")
-      return 6
-    if (romanNumeral == "V")
-      return 5
-    if (romanNumeral == "IV")
-      return 4
+
     var number = 0
+    if (romanNumeral.length == 0)
+      return 0
+    if (romanNumeral.charAt(0) == 'V'){
+      number += 5
+      romanNumeral.drop(1)
+    }
+    else if (romanNumeral == "IV")
+      return 4
     romanNumeral.foreach((entry:Char) => if (entry == 'I') number+=1)
     number
   }
