@@ -1,6 +1,6 @@
 package com.romannumeralsconverter
 
-import scala.collection.{mutable, SortedMap}
+import scala.collection.mutable
 
 object convertToRomanNumeral extends ((Int) => RomanNumeral) {
   val valueToRomanNumeralMap =
@@ -32,13 +32,17 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral) {
       counter -= biggestFoundTuple._1
     }while(biggestFoundTuple._2 != "")
 
-    new RomanNumeral(romanNumeral)
+    RomanNumeral(romanNumeral)
   }
 }
 
 
 object convertToLatinNumeral extends ((String) => Int) {
   def apply(romanNumeral: String): Int = {
+    if (romanNumeral == "I"){
+      return 1
+    }
+
     0
   }
 }

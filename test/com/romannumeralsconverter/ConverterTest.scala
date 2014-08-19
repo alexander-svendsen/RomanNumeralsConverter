@@ -2,6 +2,7 @@ package com.romannumeralsconverter
 
 import org.scalatest.FunSuite
 
+//Ignore the warnings in this file, The compiler can't seem to figure out that the asserts has matching types
 class ConverterTest extends FunSuite {
   test("convertToRomanNumeral should be able to convert 0 to empty string"){
     assert(convertToRomanNumeral(0) == "")
@@ -103,4 +104,15 @@ class ConverterTest extends FunSuite {
   test("convertToRomanNumeral should be able to convert 1995 to MCMXCV"){
     assert(convertToRomanNumeral(1995) == "MCMXCV")
   }
+
+
+  test("convertToLatinNumeral should be able to convert empty string to 0"){
+    assert(convertToLatinNumeral("") == 0)
+  }
+
+  test("convertToLatinNumeral should be able to I to 1"){
+    assert(convertToLatinNumeral("I") == 1)
+  }
+
+
 }
