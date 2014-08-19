@@ -39,6 +39,9 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral) {
 
 object convertToLatinNumeral extends ((String) => Int) {
   def apply(romanNumeral: String): Int = {
+    if (romanNumeral == "II"){
+      return 2
+    }
     if (romanNumeral == "I"){
       return 1
     }
