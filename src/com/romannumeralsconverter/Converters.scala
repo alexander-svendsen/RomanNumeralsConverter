@@ -43,13 +43,19 @@ object convertToLatinNumeral extends ((String) => Int) {
     var number = 0
     if (romanNumeral.length == 0)
       return 0
+
+    if (romanNumeral == "IX"){
+      return 9
+    }
     if (romanNumeral.charAt(0) == 'V'){
       number += 5
       romanNumeral.drop(1)
     }
     else if (romanNumeral == "IV")
       return 4
+
     romanNumeral.foreach((entry:Char) => if (entry == 'I') number+=1)
     number
   }
 }
+
