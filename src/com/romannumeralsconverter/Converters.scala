@@ -38,28 +38,37 @@ object convertToRomanNumeral extends ((Int) => String) {
 
 
 object convertToLatinNumeral extends ((String) => Int) {
+  val romanNumeralToLatinNumeralMap =
+    Map (
+      "X" -> 10,
+      "IX" -> 9,
+      "V" -> 5,
+      "IV" -> 4,
+      "I" -> 1
+    )
   def apply(romanNumeral: String): Int = {
-
+    val iterator = romanNumeral.toList.iterator.buffered
     var number = 0
-    if (romanNumeral.length == 0)
-      return 0
 
-    if (romanNumeral.charAt(0) == 'X'){
-      number += 10
-      romanNumeral.drop(1)
-    }
+    var current = ' '
+    var temporalValue = Option(0)
 
-    else if (romanNumeral == "IX"){
-      return 9
+    while (iterator.hasNext){
+      current = iterator.next()
+      if (iterator.hasNext){
+        temporalValue = romanNumeralToLatinNumeralMap.get(current + "" + iterator.head)
+        if (temporalValue.nonEmpty){
+          number += temporalValue.get
+          iterator.next() //throw the next out then
+        }
+        else{
+          number += romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
+        }
+      }
+      else{
+        number += romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
+      }
     }
-    if (romanNumeral.charAt(0) == 'V'){
-      number += 5
-      romanNumeral.drop(1)
-    }
-    else if (romanNumeral == "IV")
-      return 4
-
-    romanNumeral.foreach((entry:Char) => if (entry == 'I') number+=1)
     number
   }
 }
