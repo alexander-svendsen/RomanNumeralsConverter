@@ -2,7 +2,7 @@ package com.romannumeralsconverter
 
 import scala.collection.mutable
 
-object convertToRomanNumeral extends ((Int) => RomanNumeral) {
+object convertToRomanNumeral extends ((Int) => String) {
   val valueToRomanNumeralMap =
     mutable.LinkedHashMap (
       1000 -> "M",
@@ -20,9 +20,9 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral) {
       1 -> "I"
     )
 
-  def apply(number: Int): RomanNumeral = {
+  def apply(latinNumeral: Int): String = {
     var romanNumeral = ""
-    var counter = number
+    var counter = latinNumeral
     val default = (0,"")
 
     var biggestFoundTuple = (0,"")
@@ -32,7 +32,7 @@ object convertToRomanNumeral extends ((Int) => RomanNumeral) {
       counter -= biggestFoundTuple._1
     }while(biggestFoundTuple._2 != "")
 
-    RomanNumeral(romanNumeral)
+    romanNumeral
   }
 }
 
