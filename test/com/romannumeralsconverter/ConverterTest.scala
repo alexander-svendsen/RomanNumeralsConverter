@@ -141,4 +141,8 @@ class ConverterTest extends FunSuite {
   test("convertToLatinNumeral should be able to X to 10"){
     assert(convertToLatinNumeral("X") == 10)
   }
+
+  test("convertToLatinNumeral should be able to XI to 11"){
+    assert(convertToLatinNumeral("XI") == 11)
+  }
 }

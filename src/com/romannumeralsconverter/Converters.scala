@@ -44,11 +44,12 @@ object convertToLatinNumeral extends ((String) => Int) {
     if (romanNumeral.length == 0)
       return 0
 
-    if (romanNumeral == "X"){
-      return 10
+    if (romanNumeral.charAt(0) == 'X'){
+      number += 10
+      romanNumeral.drop(1)
     }
 
-    if (romanNumeral == "IX"){
+    else if (romanNumeral == "IX"){
       return 9
     }
     if (romanNumeral.charAt(0) == 'V'){
