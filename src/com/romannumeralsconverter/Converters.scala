@@ -61,10 +61,14 @@ object convertToLatinNumeral extends ((String) => Int) {
   def parseNextRomanNumeral(iterator: BufferedIterator[Char]): Int = {
     var current: Char = ' '
     var temporalValue = Option(0)
-
     current = iterator.next()
+
+    def getTheNextToCharacters: String = {
+      current.toString + iterator.head.toString
+    }
+
     if (iterator.hasNext) {
-      temporalValue = romanNumeralToLatinNumeralMap.get(current + "" + iterator.head)
+      temporalValue = romanNumeralToLatinNumeralMap.get(getTheNextToCharacters)
       if (temporalValue.nonEmpty) {
         iterator.next()
         temporalValue.get
