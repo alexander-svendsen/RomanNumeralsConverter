@@ -149,4 +149,58 @@ class ConverterTest extends FunSuite {
   test("convertToLatinNumeral should be able to XIV to 14"){
     assert(convertToLatinNumeral("XIV") == 14)
   }
+
+  test("convertToLatinNumeral should be able to convert XIX to 19"){
+    assert(convertToLatinNumeral("XIX") == 19)
+  }
+
+  test("convertToLatinNumeral should be able to convert XX to 20"){
+    assert(convertToLatinNumeral("XX") == 20)
+  }
+
+  test("convertToLatinNumeral should be able to convert XXX to 30"){
+    assert(convertToLatinNumeral("XXX") == 30)
+  }
+
+  test("convertToLatinNumeral should be able to convert XL to 40"){
+    assert(convertToLatinNumeral("XL") == 40)
+  }
+
+  test("convertToLatinNumeral should be able to convert L to 50"){
+    assert(convertToLatinNumeral("L") == 50)
+  }
+
+  test("convertToLatinNumeral should be able to convert LXX to 70"){
+    assert(convertToLatinNumeral("LXX") == 70)
+  }
+
+  test("convertToLatinNumeral should be able to convert XC to XC"){
+    assert(convertToLatinNumeral("XC") == 90)
+  }
+
+  test("convertToLatinNumeral should be able to convert C to 100"){
+    assert(convertToLatinNumeral("C") == 100)
+  }
+
+  test("convertToLatinNumeral should be able to convert CD to 400"){
+    assert(convertToLatinNumeral("CD") == 400)
+  }
+
+  test("convertToLatinNumeral should be able to convert 500 to 500"){
+    assert(convertToLatinNumeral("D") == 500)
+  }
+
+  test("convertToLatinNumeral should be able to convert CM to 900"){
+    assert(convertToLatinNumeral("CM") == 900)
+  }
+
+  test("convertToLatinNumeral should be able to convert M to 1000"){
+    assert(convertToLatinNumeral("M") == 1000)
+  }
+
+  //Ultimate test
+  test("convertToLatinNumeral should be able to convert MCMXCV to 1995"){
+    assert(convertToLatinNumeral("MCMXCV") == 1995)
+  }
+
 }
