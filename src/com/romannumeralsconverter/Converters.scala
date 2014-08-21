@@ -46,30 +46,36 @@ object convertToLatinNumeral extends ((String) => Int) {
       "IV" -> 4,
       "I" -> 1
     )
+
+
   def apply(romanNumeral: String): Int = {
     val iterator = romanNumeral.toList.iterator.buffered
     var number = 0
 
-    var current = ' '
-    var temporalValue = Option(0)
-
     while (iterator.hasNext){
-      current = iterator.next()
-      if (iterator.hasNext){
-        temporalValue = romanNumeralToLatinNumeralMap.get(current + "" + iterator.head)
-        if (temporalValue.nonEmpty){
-          number += temporalValue.get
-          iterator.next() //throw the next out then
-        }
-        else{
-          number += romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
-        }
-      }
-      else{
-        number += romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
-      }
+      number += parseNextRomanNumeral(iterator)
     }
     number
+  }
+
+  def parseNextRomanNumeral(iterator: BufferedIterator[Char]): Int = {
+    var current: Char = ' '
+    var temporalValue = Option(0)
+
+    current = iterator.next()
+    if (iterator.hasNext) {
+      temporalValue = romanNumeralToLatinNumeralMap.get(current + "" + iterator.head)
+      if (temporalValue.nonEmpty) {
+        iterator.next()
+        temporalValue.get
+      }
+      else {
+        romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
+      }
+    }
+    else {
+      romanNumeralToLatinNumeralMap.get(current.toString).getOrElse(0)
+    }
   }
 }
 
